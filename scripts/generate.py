@@ -3,6 +3,7 @@
 Pulls public stats from the GitHub GraphQL API and writes, into the output dir:
   card-dark.svg / card-light.svg       neofetch-style terminal card
   repo-<name>-dark.svg / -light.svg    project cards for FEATURED repos
+  activity-dark.svg / -light.svg       recent public activity feed
 
 Usage: GITHUB_TOKEN=... python scripts/generate.py <login> <out_dir>
        python scripts/generate.py --mock <out_dir>   (render with sample data)
@@ -71,6 +72,30 @@ def fetch(login, token):
     if "errors" in data:
         raise SystemExit(f"GraphQL errors: {data['errors']}")
     return data["data"]["user"]
+
+
+def fetch_events(login, token):
+    req = urllib.request.Request(f"https://api.github.com/users/{login}/events/public?per_page=60",
+                                 headers={"Authorization": f"bearer {token}", "User-Agent": "profile-cards",
+                                          "Accept": "application/vnd.github+json"})
+    with urllib.request.urlopen(req) as r:
+        return json.load(r)
+
+
+def mock_events():
+    now = dt.datetime.now(dt.timezone.utc)
+    def ts(h):
+        return (now - dt.timedelta(hours=h)).strftime("%Y-%m-%dT%H:%M:%SZ")
+    return [
+        {"type": "PushEvent", "repo": {"name": "lakshya-byte/kub_rag"}, "payload": {"size": 3}, "created_at": ts(2)},
+        {"type": "PushEvent", "repo": {"name": "lakshya-byte/kub_rag"}, "payload": {"size": 2}, "created_at": ts(3)},
+        {"type": "PullRequestEvent", "repo": {"name": "deepset-ai/haystack"},
+         "payload": {"action": "closed", "number": 9123, "pull_request": {"merged": True}}, "created_at": ts(20)},
+        {"type": "WatchEvent", "repo": {"name": "anthropics/claude-code"}, "payload": {}, "created_at": ts(30)},
+        {"type": "CreateEvent", "repo": {"name": "lakshya-byte/lakshya-byte"}, "payload": {"ref_type": "repository"}, "created_at": ts(50)},
+        {"type": "IssuesEvent", "repo": {"name": "marketcalls/openalgo"}, "payload": {"action": "opened", "issue": {"number": 77}}, "created_at": ts(200)},
+        {"type": "ForkEvent", "repo": {"name": "deepset-ai/haystack"}, "payload": {}, "created_at": ts(400)},
+    ]
 
 
 def mock():
@@ -262,16 +287,110 @@ def repo_card(r, t):
     return "\n".join(out)
 
 
+def describe(e):
+    """Returns (icon, verb, repo) for an event, or None to skip it."""
+    p, kind = e["payload"], e["type"]
+    if kind == "PushEvent":
+        n = p.get("size")
+        return "⬆", f"pushed {n} commit{'s' if n != 1 else ''} to" if n else "pushed to", n or 0
+    if kind == "PullRequestEvent":
+        pr = p.get("number") or p.get("pull_request", {}).get("number", "")
+        if p["action"] == "closed" and p.get("pull_request", {}).get("merged"):
+            return "⇄", f"merged PR #{pr} in", None
+        if p["action"] in ("opened", "reopened"):
+            return "⇄", f"opened PR #{pr} in", None
+        return None
+    if kind == "IssuesEvent" and p["action"] in ("opened", "closed"):
+        return "◉", f"{p['action']} issue #{p['issue']['number']} in", None
+    if kind == "IssueCommentEvent":
+        return "✎", f"commented on #{p['issue']['number']} in", None
+    if kind == "PullRequestReviewEvent":
+        return "✓", "reviewed a PR in", None
+    if kind == "CreateEvent" and p.get("ref_type") == "repository":
+        return "✦", "created", None
+    if kind == "ReleaseEvent":
+        return "◆", f"released {p['release']['tag_name']} of", None
+    if kind == "WatchEvent":
+        return "★", "starred", None
+    if kind == "ForkEvent":
+        return "⑂", "forked", None
+    return None
+
+
+def ago(ts):
+    secs = (dt.datetime.now(dt.timezone.utc) - dt.datetime.fromisoformat(ts.replace("Z", "+00:00"))).total_seconds()
+    for unit, size in (("d", 86400), ("h", 3600), ("m", 60)):
+        if secs >= size:
+            return f"{int(secs // size)}{unit} ago"
+    return "just now"
+
+
+def activity_items(events, limit=7):
+    items = []
+    for e in events:
+        d = describe(e)
+        if not d:
+            continue
+        icon, verb, commits = d
+        repo = e["repo"]["name"]
+        last = items[-1] if items else None
+        # fold runs of pushes to the same repo into one line
+        if e["type"] == "PushEvent" and last and last["type"] == "PushEvent" and last["repo"] == repo:
+            last["commits"] += commits
+            if last["commits"]:
+                last["verb"] = f"pushed {last['commits']} commits to"
+            continue
+        items.append(dict(type=e["type"], icon=icon, verb=verb, repo=repo, commits=commits, when=ago(e["created_at"])))
+        if len(items) == limit:
+            break
+    return items
+
+
+def activity_card(items, login, t):
+    W, rh, top = 440, 34, 62
+    H = top + max(len(items), 1) * rh + 20
+    out = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" font-family="{FONT}">',
+           "<defs><style>.r{opacity:0;animation:in .4s ease-out forwards}"
+           "@keyframes in{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}"
+           ".live{animation:p 1.6s ease-in-out infinite}@keyframes p{50%{opacity:.25}}</style>"
+           f'<linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="{t["bg"]}"/>'
+           f'<stop offset="1" stop-color="{t["bg2"]}"/></linearGradient></defs>',
+           f'<rect x=".5" y=".5" width="{W-1}" height="{H-1}" rx="12" fill="url(#g)" stroke="{t["border"]}"/>',
+           f'<circle class="live" cx="26" cy="31" r="5" fill="{t["ok"]}"/>',
+           f'<text x="40" y="36" font-size="15" font-weight="700" fill="{t["key"]}">Recent activity</text>',
+           f'<text x="{W-22}" y="36" text-anchor="end" font-size="12" fill="{t["dim"]}">live · public events</text>',
+           f'<line x1="20" y1="50" x2="{W-20}" y2="50" stroke="{t["border"]}"/>']
+    if not items:
+        out.append(f'<text x="22" y="{top+18}" font-size="13" fill="{t["dim"]}">Quiet right now — probably cooking something.</text>')
+    for i, it in enumerate(items):
+        y = top + i * rh
+        repo = it["repo"].split("/", 1)[1] if it["repo"].startswith(f"{login}/") else it["repo"]
+        if len(repo) > 26:
+            repo = repo[:25] + "…"
+        out.append(f'<g class="r" style="animation-delay:{i*0.08:.2f}s">'
+                   f'<rect x="20" y="{y}" width="26" height="26" rx="7" fill="{t["bar_bg"]}"/>'
+                   f'<text x="33" y="{y+18}" text-anchor="middle" font-size="13" fill="{t["accent"]}">{it["icon"]}</text>'
+                   f'<text x="56" y="{y+12}" font-size="12" fill="{t["dim"]}">{escape(it["verb"])}</text>'
+                   f'<text x="56" y="{y+27}" font-size="13" font-weight="700" fill="{t["fg"]}">{escape(repo)}</text>'
+                   f'<text x="{W-22}" y="{y+18}" text-anchor="end" font-size="12" fill="{t["dim"]}">{it["when"]}</text></g>')
+    out.append("</svg>")
+    return "\n".join(out)
+
+
 def main():
     if sys.argv[1] == "--mock":
-        user, out_dir = mock(), sys.argv[2]
+        user, events, out_dir = mock(), mock_events(), sys.argv[2]
     else:
-        user, out_dir = fetch(sys.argv[1], os.environ["GITHUB_TOKEN"]), sys.argv[2]
+        login, token, out_dir = sys.argv[1], os.environ["GITHUB_TOKEN"], sys.argv[2]
+        user, events = fetch(login, token), fetch_events(login, token)
+    items = activity_items(events)
     os.makedirs(out_dir, exist_ok=True)
     by_name = {r["name"]: r for r in user["repositories"]["nodes"]}
     for theme, t in THEMES.items():
         with open(os.path.join(out_dir, f"card-{theme}.svg"), "w") as f:
             f.write(card(user, t))
+        with open(os.path.join(out_dir, f"activity-{theme}.svg"), "w") as f:
+            f.write(activity_card(items, user["login"], t))
         for name in FEATURED:
             if name in by_name:
                 with open(os.path.join(out_dir, f"repo-{name}-{theme}.svg"), "w") as f:

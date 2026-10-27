@@ -101,12 +101,13 @@
 
 <table>
 <tr>
-<td width="50%" valign="top">
+<td width="50%" valign="top" align="center">
 
-**Recent activity**
-
-<!--START_SECTION:activity-->
-<!--END_SECTION:activity-->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/lakshya-byte/lakshya-byte/output/activity-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/lakshya-byte/lakshya-byte/output/activity-light.svg" />
+  <img src="https://raw.githubusercontent.com/lakshya-byte/lakshya-byte/output/activity-dark.svg" width="100%" alt="recent activity" />
+</picture>
 
 </td>
 <td width="50%" valign="top" align="center">
