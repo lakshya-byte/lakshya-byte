@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="340" viewBox="0 0 1200 340" font-family="ui-monospace, SFMono-Regular, 'JetBrains Mono', Menlo, Consolas, monospace">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#05030f"/>
+      <stop offset="0.55" stop-color="#110a2b"/>
+      <stop offset="1" stop-color="#07091c"/>
+    </linearGradient>
+    <linearGradient id="name" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#c4b5fd"/>
+      <stop offset="0.5" stop-color="#f0abfc"/>
+      <stop offset="1" stop-color="#67e8f9"/>
+      <animateTransform attributeName="gradientTransform" type="translate" values="-0.4 0;0.4 0;-0.4 0" dur="8s" repeatCount="indefinite"/>
+    </linearGradient>
+    <radialGradient id="blobA"><stop offset="0" stop-color="#7c3aed" stop-opacity=".55"/><stop offset="1" stop-color="#7c3aed" stop-opacity="0"/></radialGradient>
+    <radialGradient id="blobB"><stop offset="0" stop-color="#06b6d4" stop-opacity=".35"/><stop offset="1" stop-color="#06b6d4" stop-opacity="0"/></radialGradient>
+    <radialGradient id="blobC"><stop offset="0" stop-color="#ec4899" stop-opacity=".30"/><stop offset="1" stop-color="#ec4899" stop-opacity="0"/></radialGradient>
+    <filter id="glow" x="-20%" y="-50%" width="140%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#a78bfa" stroke-opacity=".07"/>
+    </pattern>
+    <clipPath id="frame"><rect width="1200" height="340" rx="18"/></clipPath>
+    <clipPath id="type"><rect x="0" y="0" height="40" width="0">
+      <animate attributeName="width" values="0;560;560;0" keyTimes="0;0.45;0.9;1" dur="7s" repeatCount="indefinite" calcMode="spline" keySplines=".4 0 .2 1;0 0 1 1;.4 0 .2 1"/>
+    </rect></clipPath>
+    <style>
+      .float { animation: rise linear infinite; }
+      @keyframes rise { from { transform: translateY(0); opacity: 0 } 15% { opacity: .9 } to { transform: translateY(-360px); opacity: 0 } }
+      .pulse { animation: pulse 6s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+      @keyframes pulse { 50% { transform: scale(1.18); } }
+      .scan { animation: scan 5s linear infinite; }
+      @keyframes scan { from { transform: translateY(-40px) } to { transform: translateY(380px) } }
+      .blink { animation: blink 1s steps(1) infinite; }
+      @keyframes blink { 50% { opacity: 0 } }
+      .dot { animation: blink 2s ease-in-out infinite; }
+    </style>
+  </defs>
+
+  <g clip-path="url(#frame)">
+    <rect width="1200" height="340" fill="url(#bg)"/>
+    <rect width="1200" height="340" fill="url(#grid)">
+      <animateTransform attributeName="transform" type="translate" values="0 0;40 40" dur="6s" repeatCount="indefinite"/>
+    </rect>
+    <ellipse class="pulse" cx="230" cy="90" rx="320" ry="220" fill="url(#blobA)"/>
+    <ellipse class="pulse" style="animation-delay:-2s" cx="1010" cy="260" rx="300" ry="200" fill="url(#blobB)"/>
+    <ellipse class="pulse" style="animation-delay:-4s" cx="760" cy="40" rx="240" ry="160" fill="url(#blobC)"/>
+
+    <!-- particles -->
+    <g fill="#c4b5fd">
+      <circle class="float" cx="80"   cy="350" r="1.6" style="animation-duration:9s"/>
+      <circle class="float" cx="190"  cy="350" r="1.1" style="animation-duration:12s;animation-delay:-3s"/>
+      <circle class="float" cx="310"  cy="350" r="2"   style="animation-duration:10s;animation-delay:-6s"/>
+      <circle class="float" cx="455"  cy="350" r="1.3" style="animation-duration:14s;animation-delay:-1s"/>
+      <circle class="float" cx="600"  cy="350" r="1.7" style="animation-duration:11s;animation-delay:-8s"/>
+      <circle class="float" cx="740"  cy="350" r="1.2" style="animation-duration:13s;animation-delay:-4s"/>
+      <circle class="float" cx="880"  cy="350" r="2"   style="animation-duration:9s;animation-delay:-5s"/>
+      <circle class="float" cx="1010" cy="350" r="1.4" style="animation-duration:12s;animation-delay:-9s"/>
+      <circle class="float" cx="1130" cy="350" r="1.8" style="animation-duration:10s;animation-delay:-2s"/>
+    </g>
+    <g fill="#67e8f9">
+      <circle class="float" cx="130"  cy="350" r="1.2" style="animation-duration:15s;animation-delay:-7s"/>
+      <circle class="float" cx="520"  cy="350" r="1.5" style="animation-duration:13s;animation-delay:-10s"/>
+      <circle class="float" cx="960"  cy="350" r="1.1" style="animation-duration:16s;animation-delay:-3s"/>
+    </g>
+
+    <!-- scanline -->
+    <rect class="scan" x="0" y="0" width="1200" height="2" fill="#a78bfa" opacity=".18"/>
+
+    <!-- top chrome -->
+    <g transform="translate(36 34)">
+      <circle r="6" fill="#ff5f57"/><circle cx="20" r="6" fill="#febc2e"/><circle cx="40" r="6" fill="#28c840"/>
+      <text x="66" y="5" fill="#a78bfa" fill-opacity=".7" font-size="14">~/lakshya-byte — zsh</text>
+    </g>
+    <g transform="translate(1164 34)" text-anchor="end" font-size="14">
+      <text fill="#86efac"><tspan class="dot">●</tspan> online · open to internships</text>
+    </g>
+
+    <!-- name -->
+    <text x="600" y="170" text-anchor="middle" font-size="92" font-weight="800" letter-spacing="6" fill="url(#name)" filter="url(#glow)" font-family="'Segoe UI', Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif">LAKSHYA DUBEY</text>
+
+    <!-- typed subtitle -->
+    <g transform="translate(322 212)">
+      <g clip-path="url(#type)">
+        <text y="28" font-size="24" fill="#e9d5ff"><tspan fill="#f472b6">❯</tspan> building AI agents that actually ship</text>
+      </g>
+      <rect class="blink" y="8" width="13" height="26" fill="#f472b6">
+        <animate attributeName="x" values="0;560;560;0" keyTimes="0;0.45;0.9;1" dur="7s" repeatCount="indefinite" calcMode="spline" keySplines=".4 0 .2 1;0 0 1 1;.4 0 .2 1"/>
+      </rect>
+    </g>
+
+    <!-- tags -->
+    <g transform="translate(600 292)" text-anchor="middle" font-size="15" fill="#94a3b8">
+      <text>AI Engineer  ·  RAG  ·  MCP  ·  Agents  ·  Full-Stack  ·  Hackathons</text>
+    </g>
+
+    <rect x=".5" y=".5" width="1199" height="339" rx="18" fill="none" stroke="#a78bfa" stroke-opacity=".25"/>
+  </g>
+</svg>

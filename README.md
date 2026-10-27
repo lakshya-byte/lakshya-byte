@@ -1,119 +1,125 @@
-<!-- ═══════════════════════════ HEADER ═══════════════════════════ -->
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f0c29,50:302b63,100:24243e&height=220&section=header&text=Lakshya%20Dubey&fontSize=64&fontColor=ffffff&fontAlignY=38&desc=Building%20AI%20agents%20that%20actually%20ship&descAlignY=60&descSize=20&animation=fadeIn" width="100%" />
+  <img src="./assets/hero.svg" width="100%" alt="Lakshya Dubey — building AI agents that actually ship" />
 </p>
 
 <p align="center">
-  <a href="https://git.io/typing-svg">
-    <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=22&duration=3000&pause=800&color=A78BFA&center=true&vCenter=true&width=620&lines=AI+Engineer+%E2%80%A2+Full-Stack+Developer;RAG+pipelines+%E2%80%A2+MCP+servers+%E2%80%A2+Agents;Hackathon+builder+%F0%9F%8F%86;Turning+ideas+into+products+in+48+hours" alt="Typing SVG" />
-  </a>
-</p>
-
-<p align="center">
-  <a href="https://github.com/lakshya-byte"><img src="https://komarev.com/ghpvc/?username=lakshya-byte&style=for-the-badge&color=7c3aed&label=PROFILE+VIEWS" /></a>
-  <a href="https://github.com/lakshya-byte?tab=followers"><img src="https://img.shields.io/github/followers/lakshya-byte?style=for-the-badge&logo=github&color=302b63&labelColor=0f0c29" /></a>
-  <a href="mailto:lakshyadubey73@gmail.com"><img src="https://img.shields.io/badge/Email-Say%20hi-a78bfa?style=for-the-badge&logo=gmail&logoColor=white&labelColor=0f0c29" /></a>
+  <a href="https://github.com/lakshya-byte"><img src="https://komarev.com/ghpvc/?username=lakshya-byte&style=for-the-badge&color=7c3aed&label=PROFILE+VIEWS&labelColor=0b0820" /></a>
+  <a href="https://github.com/lakshya-byte?tab=followers"><img src="https://img.shields.io/github/followers/lakshya-byte?style=for-the-badge&logo=github&color=7c3aed&labelColor=0b0820" /></a>
+  <a href="mailto:lakshyadubey73@gmail.com"><img src="https://img.shields.io/badge/Email-Say%20hi-f472b6?style=for-the-badge&logo=gmail&logoColor=white&labelColor=0b0820" /></a>
   <!-- TODO: replace with your LinkedIn / X handles -->
-  <a href="https://www.linkedin.com/in/YOUR_LINKEDIN"><img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white&labelColor=0f0c29" /></a>
-  <a href="https://x.com/YOUR_X_HANDLE"><img src="https://img.shields.io/badge/X-Follow-000000?style=for-the-badge&logo=x&logoColor=white&labelColor=0f0c29" /></a>
+  <a href="https://www.linkedin.com/in/YOUR_LINKEDIN"><img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white&labelColor=0b0820" /></a>
+  <a href="https://x.com/YOUR_X_HANDLE"><img src="https://img.shields.io/badge/X-Follow-e2e8f0?style=for-the-badge&logo=x&logoColor=white&labelColor=0b0820" /></a>
 </p>
 
-<!-- ═══════════════════════════ ABOUT ═══════════════════════════ -->
-## 🧠 About Me
+<br/>
+
+<!-- Live card: rebuilt every 6h by .github/workflows/profile.yml -->
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/lakshya-byte/lakshya-byte/output/card-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/lakshya-byte/lakshya-byte/output/card-light.svg" />
+    <img src="https://raw.githubusercontent.com/lakshya-byte/lakshya-byte/output/card-dark.svg" width="820" alt="neofetch-style stats card" />
+  </picture>
+</p>
+
+## ⚡ Right now
 
 <table>
 <tr>
-<td width="58%" valign="top">
+<td width="50%" valign="top">
 
-```ts
-const lakshya = {
-  role:       "AI Engineer · Full-Stack Developer",
-  building:   ["RAG systems", "MCP servers", "autonomous agents"],
-  exploring:  ["agent evals", "LLM infra", "algo trading"],
-  stack:      ["TypeScript", "Python", "Next.js", "FastAPI"],
-  hackathons: "ship fast, demo faster",
-  openTo:     ["internships", "collabs", "hackathon teams"],
-  funFact:    "I read startup teardowns for fun",
-};
-```
+**🔨 Building**
+- **[kub_rag](https://github.com/lakshya-byte/kub_rag)**: retrieval-augmented generation, done right
+- **MCP servers & doc agents** that plug LLMs into real tools
+
+**🌱 Contributing**
+- Open-source AI tooling: **[Haystack](https://github.com/deepset-ai/haystack)**
+- Algo trading infra: **[OpenAlgo](https://github.com/marketcalls/openalgo)**
 
 </td>
-<td width="42%" valign="top">
+<td width="50%" valign="top">
 
-- 🔭 Building **[kub_rag](https://github.com/lakshya-byte/kub_rag)**: retrieval-augmented generation, done right
-- 🤖 Hacking on **MCP servers & doc agents**
-- 📈 Tinkering with **algo trading** via OpenAlgo
-- 🌱 Contributing to **open-source AI tooling** (Haystack)
-- 💬 Ask me about **LLMs, agents, system design**
-- ⚡ Always shipping something new
+**🧪 Exploring**
+- Agent evals & reliability
+- LLM infra: caching, routing, cost
+- Shipping full products in hackathon time
+
+**🤝 Open to**
+- Internships · collabs · hackathon teams
+- Ask me about **LLMs, agents, system design**
 
 </td>
 </tr>
 </table>
 
-<!-- ═══════════════════════════ STACK ═══════════════════════════ -->
-## 🛠️ Tech Arsenal
+## 🛠️ Arsenal
 
-<p align="center"><b>Languages</b></p>
+<table align="center">
+<tr><td align="right"><sub><b>LANG</b></sub></td><td><img src="https://skillicons.dev/icons?i=python,ts,js,cpp,java,bash&theme=dark" /></td></tr>
+<tr><td align="right"><sub><b>WEB</b></sub></td><td><img src="https://skillicons.dev/icons?i=react,nextjs,tailwind,nodejs,express,fastapi,flask&theme=dark" /></td></tr>
+<tr><td align="right"><sub><b>DATA</b></sub></td><td><img src="https://skillicons.dev/icons?i=mongodb,postgres,supabase,redis&theme=dark" /></td></tr>
+<tr><td align="right"><sub><b>SHIP</b></sub></td><td><img src="https://skillicons.dev/icons?i=docker,kubernetes,vercel,aws,gcp,git,linux&theme=dark" /></td></tr>
+<tr><td align="right"><sub><b>AI</b></sub></td><td>
+  <img src="https://img.shields.io/badge/Claude-D97757?style=flat-square&logo=anthropic&logoColor=white" />
+  <img src="https://img.shields.io/badge/OpenAI-412991?style=flat-square&logo=openai&logoColor=white" />
+  <img src="https://img.shields.io/badge/LangChain-1C3C3C?style=flat-square&logo=langchain&logoColor=white" />
+  <img src="https://img.shields.io/badge/Haystack-1E40AF?style=flat-square" />
+  <img src="https://img.shields.io/badge/MCP-000000?style=flat-square&logo=modelcontextprotocol&logoColor=white" />
+  <img src="https://img.shields.io/badge/Hugging%20Face-FFD21E?style=flat-square&logo=huggingface&logoColor=black" />
+  <img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white" />
+</td></tr>
+</table>
+
+## 🚀 Featured work
+
+<!-- Cards are generated by scripts/generate.py (FEATURED list) -->
 <p align="center">
-  <img src="https://skillicons.dev/icons?i=python,ts,js,cpp,java,bash&theme=dark" />
+  <a href="https://github.com/lakshya-byte/kub_rag"><picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/lakshya-byte/lakshya-byte/output/repo-kub_rag-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/lakshya-byte/lakshya-byte/output/repo-kub_rag-light.svg" />
+    <img src="https://raw.githubusercontent.com/lakshya-byte/lakshya-byte/output/repo-kub_rag-dark.svg" width="400" alt="kub_rag" />
+  </picture></a>
+  <a href="https://github.com/lakshya-byte/mcp-server"><picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/lakshya-byte/lakshya-byte/output/repo-mcp-server-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/lakshya-byte/lakshya-byte/output/repo-mcp-server-light.svg" />
+    <img src="https://raw.githubusercontent.com/lakshya-byte/lakshya-byte/output/repo-mcp-server-dark.svg" width="400" alt="mcp-server" />
+  </picture></a>
+  <br/>
+  <a href="https://github.com/lakshya-byte/docs-agent"><picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/lakshya-byte/lakshya-byte/output/repo-docs-agent-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/lakshya-byte/lakshya-byte/output/repo-docs-agent-light.svg" />
+    <img src="https://raw.githubusercontent.com/lakshya-byte/lakshya-byte/output/repo-docs-agent-dark.svg" width="400" alt="docs-agent" />
+  </picture></a>
+  <a href="https://github.com/lakshya-byte/openalgo"><picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/lakshya-byte/lakshya-byte/output/repo-openalgo-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/lakshya-byte/lakshya-byte/output/repo-openalgo-light.svg" />
+    <img src="https://raw.githubusercontent.com/lakshya-byte/lakshya-byte/output/repo-openalgo-dark.svg" width="400" alt="openalgo" />
+  </picture></a>
 </p>
 
-<p align="center"><b>AI / ML</b></p>
-<p align="center">
-  <img src="https://img.shields.io/badge/LangChain-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white" />
-  <img src="https://img.shields.io/badge/Haystack-1E40AF?style=for-the-badge&logo=deepset&logoColor=white" />
-  <img src="https://img.shields.io/badge/Claude-D97757?style=for-the-badge&logo=anthropic&logoColor=white" />
-  <img src="https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white" />
-  <img src="https://img.shields.io/badge/Hugging%20Face-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black" />
-  <img src="https://img.shields.io/badge/MCP-000000?style=for-the-badge&logo=modelcontextprotocol&logoColor=white" />
-  <img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white" />
-</p>
+## 📡 Live feed
 
-<p align="center"><b>Frontend · Backend</b></p>
-<p align="center">
-  <img src="https://skillicons.dev/icons?i=react,nextjs,tailwind,nodejs,express,fastapi,flask&theme=dark" />
-</p>
+<table>
+<tr>
+<td width="50%" valign="top">
 
-<p align="center"><b>Data · Cloud · DevOps</b></p>
-<p align="center">
-  <img src="https://skillicons.dev/icons?i=mongodb,postgres,supabase,redis,docker,kubernetes,vercel,aws,gcp,git,linux&theme=dark" />
-</p>
+**Recent activity**
 
-<!-- ═══════════════════════════ PROJECTS ═══════════════════════════ -->
-## 🚀 Featured Work
+<!--START_SECTION:activity-->
+<!--END_SECTION:activity-->
+
+</td>
+<td width="50%" valign="top" align="center">
+
+<img src="https://streak-stats.demolab.com?user=lakshya-byte&hide_border=true&background=0b0820&ring=a78bfa&fire=f472b6&currStreakLabel=a78bfa&sideLabels=c4b5fd&currStreakNum=e2e8f0&sideNums=e2e8f0&dates=94a3b8&stroke=2e2363" width="100%" />
+
+</td>
+</tr>
+</table>
 
 <p align="center">
-  <a href="https://github.com/lakshya-byte/kub_rag"><img src="https://github-readme-stats.vercel.app/api/pin/?username=lakshya-byte&repo=kub_rag&theme=tokyonight&hide_border=true&bg_color=0f0c29&title_color=a78bfa&icon_color=a78bfa" /></a>
-  <a href="https://github.com/lakshya-byte/mcp-server"><img src="https://github-readme-stats.vercel.app/api/pin/?username=lakshya-byte&repo=mcp-server&theme=tokyonight&hide_border=true&bg_color=0f0c29&title_color=a78bfa&icon_color=a78bfa" /></a>
+  <img width="100%" src="https://github-readme-activity-graph.vercel.app/graph?username=lakshya-byte&bg_color=0b0820&color=c4b5fd&line=a78bfa&point=f472b6&area=true&area_color=7c3aed&hide_border=true&custom_title=Contribution%20activity" />
 </p>
-<p align="center">
-  <a href="https://github.com/lakshya-byte/docs-agent"><img src="https://github-readme-stats.vercel.app/api/pin/?username=lakshya-byte&repo=docs-agent&theme=tokyonight&hide_border=true&bg_color=0f0c29&title_color=a78bfa&icon_color=a78bfa" /></a>
-  <a href="https://github.com/lakshya-byte/openalgo"><img src="https://github-readme-stats.vercel.app/api/pin/?username=lakshya-byte&repo=openalgo&theme=tokyonight&hide_border=true&bg_color=0f0c29&title_color=a78bfa&icon_color=a78bfa" /></a>
-</p>
-
-<!-- ═══════════════════════════ STATS ═══════════════════════════ -->
-## 📊 GitHub Analytics
-
-<p align="center">
-  <img height="175" src="https://github-readme-stats.vercel.app/api?username=lakshya-byte&show_icons=true&include_all_commits=true&count_private=true&rank_icon=github&theme=tokyonight&hide_border=true&bg_color=0f0c29&title_color=a78bfa&icon_color=a78bfa&ring_color=a78bfa" />
-  <img height="175" src="https://github-readme-stats.vercel.app/api/top-langs/?username=lakshya-byte&layout=compact&langs_count=8&theme=tokyonight&hide_border=true&bg_color=0f0c29&title_color=a78bfa" />
-</p>
-
-<p align="center">
-  <img src="https://streak-stats.demolab.com?user=lakshya-byte&theme=tokyonight&hide_border=true&background=0f0c29&ring=a78bfa&fire=f472b6&currStreakLabel=a78bfa&sideLabels=a78bfa&dates=94a3b8" />
-</p>
-
-<p align="center">
-  <img width="100%" src="https://github-readme-activity-graph.vercel.app/graph?username=lakshya-byte&bg_color=0f0c29&color=a78bfa&line=7c3aed&point=f472b6&area=true&area_color=7c3aed&hide_border=true&custom_title=Contribution%20Activity" />
-</p>
-
-<p align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=lakshya-byte&theme=tokyonight&no-frame=true&no-bg=true&margin-w=8&row=1&column=7" />
-</p>
-
-<!-- ═══════════════════════════ SNAKE ═══════════════════════════ -->
-## 🐍 Contribution Snake
 
 <p align="center">
   <picture>
@@ -123,11 +129,6 @@ const lakshya = {
   </picture>
 </p>
 
-<!-- ═══════════════════════════ QUOTE + FOOTER ═══════════════════════════ -->
 <p align="center">
-  <img src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=tokyonight&border=false" />
-</p>
-
-<p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:24243e,50:302b63,100:0f0c29&height=120&section=footer" width="100%" />
+  <sub>⚙️ This profile rebuilds itself every 6 hours — live cards, project stats, activity feed & snake are all generated by <a href=".github/workflows/profile.yml">GitHub Actions</a>.</sub>
 </p>
