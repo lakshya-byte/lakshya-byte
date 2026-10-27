@@ -143,7 +143,7 @@ def card(u, t):
         ("Role", "AI Engineer · Full-Stack Dev"),
         ("Shell", "zsh + way too many tmux panes"),
         ("Focus", "RAG · MCP · Agents · LLM infra"),
-        ("Stack", "Python · TypeScript · Next.js"),
+        ("Stack", " · ".join(n for n, _, _ in top_languages(repos)[:3] if n != "Other")),
         ("", ""),
         ("Repos", f"{u['repositories']['totalCount']}  (★ {stars} on originals)"),
         ("Followers", f"{u['followers']['totalCount']}"),
@@ -152,7 +152,7 @@ def card(u, t):
         ("PRs · Issues", f"{u['pullRequests']['totalCount']} · {u['issues']['totalCount']}"),
     ]
 
-    W, H = 900, 530
+    W, H = 900, "__H__"
     out = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" font-family="{FONT}" font-size="15">',
            "<defs><style>",
            ".r{opacity:0;animation:in .35s ease-out forwards}",
@@ -161,7 +161,7 @@ def card(u, t):
            "</style>",
            f'<linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="{t["bg"]}"/><stop offset="1" stop-color="{t["bg2"]}"/></linearGradient>',
            "</defs>",
-           f'<rect x=".5" y=".5" width="{W-1}" height="{H-1}" rx="14" fill="url(#g)" stroke="{t["border"]}"/>',
+           f'<rect x=".5" y=".5" width="{W-1}" height="__H1__" rx="14" fill="url(#g)" stroke="{t["border"]}"/>',
            # window chrome
            '<g transform="translate(24 26)"><circle r="6" fill="#ff5f57"/><circle cx="20" r="6" fill="#febc2e"/><circle cx="40" r="6" fill="#28c840"/></g>',
            f'<text x="{W/2}" y="31" text-anchor="middle" fill="{t["dim"]}" font-size="13">neofetch — {escape(login)}</text>',
@@ -235,7 +235,8 @@ def card(u, t):
     out.append(f'<text x="{x}" y="{py}" fill="{t["ok"]}" class="r" style="animation-delay:{d+0.25:.2f}s">❯ '
                f'<tspan fill="{t["dim"]}">updated {dt.date.today():%d %b %Y}</tspan> <tspan class="cur" fill="{t["accent"]}">█</tspan></text>')
     out.append("</svg>")
-    return "\n".join(out)
+    h = py + 28
+    return "\n".join(out).replace("__H1__", str(h - 1)).replace("__H__", str(h))
 
 
 def repo_card(r, t):
